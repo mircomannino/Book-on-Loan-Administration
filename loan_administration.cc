@@ -8,7 +8,7 @@ int main() {
     cout << "*** Your loan administration ***\n";
     /* Load initial data */
     LoanAdministrator admin;
-    admin.readFromFile("/home/mirco/Scrivania/C++/Loan-Administration/register.txt");
+    admin.readFromFile("./register.txt");
 
     int choice;
     do {
