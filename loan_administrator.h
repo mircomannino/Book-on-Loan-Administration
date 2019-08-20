@@ -36,6 +36,7 @@ public:
         for(auto el : loans) {
             outStream << el.second << std::endl;
         }
+        outStream.close();
     }
 
     /* Read from file */
@@ -45,6 +46,7 @@ public:
         while(getline(inStream, line)) {
             addLoanFromString(line);
         }
+        inStream.close();
     }
 
 };

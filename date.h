@@ -10,7 +10,7 @@ private:
     int year;
     int month;
     int day;
-    bool valid;
+    bool valid = true;
 public:
     /* Constructor */
     Date(int year, int month, int day) {
@@ -30,15 +30,16 @@ public:
     void setYear(int year) { this->year = year; }
     void setMonth(int month) { this->month = month; }
     void setDay(int day) { this->day = day; }
+    void setValid(bool valid) { this->valid = valid; }
     /* Getters */
     int getYear() const { return this->year; }
     int getMonth() const { return this->month; }
     int getDay() const { return this->day; }
-    bool getvalid() const { return this->valid; }
+    bool getValid() const { return this->valid; }
 };
 /* Operator "<<" overloading */
 std::ostream& operator<<(std::ostream& out, const Date& date) {
-    if(date.getvalid()) {
+    if(date.getValid()) {
         out << date.getYear();
         out << "/";
         if(date.getMonth() < 10) {
@@ -63,12 +64,18 @@ std::istream& operator>>(std::istream& in, Date& date) {
     std::string number;
     std::vector<int> dateVector;
     while(getline(dateStringStream, number, '/')) {
+        if(number == "--") {
+            date.setValid(false);
+            break;
+        }
         dateVector.push_back(stoi(number));
     }
 
-    date.setYear(dateVector[0]);
-    date.setMonth(dateVector[1]);
-    date.setDay(dateVector[2]);
+    if(date.getValid()) {
+        date.setYear(dateVector[0]);
+        date.setMonth(dateVector[1]);
+        date.setDay(dateVector[2]);
+    }
 }
 
 #endif
