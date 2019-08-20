@@ -6,7 +6,7 @@
 class LoanAdministrator {
 private:
     std::map<std::string, Loan> loans;
-    const std::string registerFile = "./register.txt";;
+    const std::string registerFile = "/home/mirco/Scrivania/C++/Loan-Administration/register.txt";
 public:
     /* Constructor */
     LoanAdministrator() {}

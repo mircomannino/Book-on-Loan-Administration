@@ -8,7 +8,7 @@ int main() {
     cout << "*** Your loan administration ***\n";
     /* Load initial data */
     LoanAdministrator admin;
-    admin.readFromFile("./register.txt");
+    admin.readFromFile("/home/mirco/Scrivania/C++/Loan-Administration/register.txt");
 
     int choice;
     do {
@@ -69,7 +69,7 @@ int main() {
 
             }
         }
-        
+
         /* Clean the screen */
         cout << "Press any key to continue...\n";
         cin.get(); cin.get();
