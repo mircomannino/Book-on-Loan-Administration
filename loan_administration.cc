@@ -5,55 +5,76 @@
 using namespace std;
 
 int main() {
-    // Date date;
-    // cin >> date;
-    // cout << date << endl;
-
-    // Loan loan("Fisica2", "Frenk", Date(2019, 20, 20), Date(false));
-    // cout << loan << endl;
-    // cout << loan << endl;
-    // cout << loan << endl;
-    // cout << loan << endl;
-    // cout << loan << endl;
-
-    // Loan loan;
-    // cin >> loan;
-    // cout << loan << endl;
-
-    // /* Debug loan_administrator - write */
-    // Loan loan1("Fisica2", "Frenk", Date(2019, 20, 20), Date(false));
-    // Loan loan2("Analisi1", "Fara", Date(2019, 20, 20), Date(false));
-    // Loan loan3("PPS", "Enzo", Date(2019, 20, 20), Date(false));
-    // LoanAdministrator admin;
-    // admin.addLoan(loan1);
-    // admin.addLoan(loan2);
-    // admin.addLoan(loan3);
-    // admin.writeOnFile("./register.txt");
-
-    /* Debug loan_administrator - read */
-    // LoanAdministrator admin;
-    // admin.readFromFile("./in.txt");
-
     cout << "*** Your loan administration ***\n";
+    /* Load initial data */
     LoanAdministrator admin;
     admin.readFromFile("./register.txt");
-    admin.writeOnFile("out.txt");
+
     int choice;
     do {
         cout << "1- Print all loans\n";
         cout << "2- Search for loan title\n";
-        cout << "3- Exit\n";
+        cout << "3- Add a loan\n";
+        cout << "4- Delete a loan\n";
+        cout << "5- Exit\n";
         cout << "Your choice: ";
         cin  >> choice;
         cout << endl;
 
-        cout << admin << endl;
-        // switch (choice) {
-        //     case 1:
-        //         cout << admin << endl;
-        //         break;
-        // }
-    } while(choice != 3);
+        switch (choice) {
+            case 1: {
+                cout << admin << endl;
+                break;
+            }
+            case 2: {
+                string searchTitle;
+                cout << "Insert a title: ";
+                cin  >> searchTitle;
+                Loan findLoan = admin.searchPerTitle(searchTitle);
+                if(findLoan.getTitle() != "") {
+                    cout << "Title found:\n";
+                    cout << findLoan << endl << endl;
+                } else {
+                    cout << "Title not found\n\n";
+                }
+                break;
+            }
+            case 3: {
+                string title;
+                string person;
+                Date start;
+                Date end;
+                cout << "Insert title: ";
+                cin  >> title;
+                cout << "Insert person: ";
+                cin  >> person;
+                cout << "Insert start date: ";
+                cin  >> start;
+                cout << "Insert end date: ";
+                cin  >> end;
+                Loan loan(title, person, start, end);
+                admin.addLoan(loan);
+                cout << "Loan added successfully\n\n";
+                break;
+            }
+            case 4: {
+                string titleToDelete;
+                cout << "Insert a title to delete: ";
+                cin  >> titleToDelete;
+                if(admin.deleteLoan(titleToDelete)) {
+                    cout << "Title deleted successfully\n\n";
+                } else {
+                    cout << "The title you insert does not exist\n\n";
+                }
+
+            }
+        }
+        
+        /* Clean the screen */
+        cout << "Press any key to continue...\n";
+        cin.get(); cin.get();
+        system("clear");
+    } while(choice != 5);
 
 
     return 0;

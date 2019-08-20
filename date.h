@@ -76,6 +76,8 @@ std::istream& operator>>(std::istream& in, Date& date) {
         date.setMonth(dateVector[1]);
         date.setDay(dateVector[2]);
     }
+
+    return in;
 }
 
 #endif

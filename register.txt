@@ -1,0 +1,5 @@
+Campi-elet		Sacchi		2019/01/10		--/--/--
+Ele2		Faraoni		2019/07/01		--/--/--
+Elettrotecnica		Akram		2019/06/01		--/--/--
+Fisica1		Claudia		2019/06/01		--/--/--
+Fisica2		Frenk		2019/10/04		--/--/--

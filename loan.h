@@ -20,7 +20,12 @@ public:
         this->start = start;
         this->end = end;
     }
-    Loan() {}
+    Loan() {
+        this->title = "";
+        this->person = "";
+        this->start = "--/--/--";
+        this->end = "--/--/--";
+    }
     /* Setters */
     void setTitle(const std::string& title) { this->title = title; }
     void setPerson(const std::string& person) { this->person = person; }
@@ -64,6 +69,8 @@ std::istream& operator>>(std::istream& in, Loan& loan) {
     loan.setPerson(personInput);
     loan.setStart(startInput);
     loan.setEnd(endInput);
+
+    return in;
 }
 /* Operator "<<" overloading */
 std::ostream& operator<<(std::ostream& out, const Loan& loan) {
@@ -71,6 +78,8 @@ std::ostream& operator<<(std::ostream& out, const Loan& loan) {
     out << loan.getPerson() << "\t\t";
     out << loan.getStart()  << "\t\t";
     out << loan.getEnd();
+
+    return out;
 }
 
 #endif
