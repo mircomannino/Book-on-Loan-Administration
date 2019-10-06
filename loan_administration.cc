@@ -55,6 +55,8 @@ int main() {
                 Loan loan(title, person, start, end);
                 admin.addLoan(loan);
                 cout << "Loan added successfully\n\n";
+                /* Update the file */
+                admin.writeOnFile("./register.txt");
                 break;
             }
             case 4: {
@@ -66,7 +68,9 @@ int main() {
                 } else {
                     cout << "The title you insert does not exist\n\n";
                 }
-
+                /* Update the file */
+                admin.writeOnFile("./register.txt");
+                break;
             }
         }
 
